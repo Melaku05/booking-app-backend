@@ -1,24 +1,174 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Booking-app-backend
 
-Things you may want to cover:
+This app uses a Rails back-end as an API to send doctor details and appointment data to the frontend of a booking application.
 
-* Ruby version
+Enjoy your API!
 
-* System dependencies
+## Link to REACT FRONTEND
 
-* Configuration
+[REACT FRONTEND](https://github.com/Melaku05/booking-app-frontend)
 
-* Database creation
+## Built With
 
-* Database initialization
+- Ruby
+- Ruby on Rails
+- Terminal
+- IRB
+- Rubocop (linters)
+- PostgreSQL
 
-* How to run the test suite
+## Milestones
 
-* Services (job queues, cache servers, search engines, etc.)
+[Project Requirements](https://github.com/microverseinc/curriculum-final-capstone/blob/main/projects/business_requirements.md) - distributed into milestones below:
 
-* Deployment instructions
+### Booking-app-backend
+- [x] Milestone 1: Setup the project for backend (group task) #1'
+- [x] Milestone 2: Implement devise gem
+- [x] Milestone 3: Rspec test user 
+- [x] Milestone 4: Generate table and model for the Doctor (Melaku)
+- [x] Milestone 5: Generate table and model for the Reservation (Ranjit)
+- [x] Milestone 6: Rspec for Reservation (Ranjit)
+- [x] Milestone 7: Rspec for Doctor (Melaku)
+- [x] Milestone 8: Implement Rspec gem (Steve)
+- [x] Milestone 9: Create Documentation (steve)
 
-* ...
+
+### Booking-app-frontend
+- [x] Milestone 1: Setup the project for the frontend (group task)
+- [x] Milestone 2: Node package manager dependencies (group task)
+- [x] Milestone 3: Create login page (group task)
+- [x] Milestone 4: Create navigation panel (group task)
+- [x] Milestone 5: Create main page (Ranjit)
+- [x] Milestone 6: Create details page (Melaku)
+- [x] Milestone 7: Create Reservation page (Steve)
+- [x] Milestone 8: Create my reservation page (Ismail)
+- [x] Milestone 9: Create the redux store (group task)
+- [x] Milestone 10: Create the doctor reducer (group task)
+- [x] Milestone 11: Create the reservation reducer (group task)
+- [x] Milestone 12: Create the login reducer (group task)
+
+- [x] Debug linter errors
+
+
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+
+## Pre-requisites
+Make sure you have Ruby and Rails installed on your computer. If not, you can follow this [tutorial](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project) to install them.
+
+If you don't have PostgreSQL installed, you can follow this [tutorial](https://www.postgresql.org/download/) to install it.
+  
+## Usage
+In your terminal, navigate to your current directory and run this code
+
+`git clone https://github.com/Melaku05/booking-app-backend.git`
+
+Then run:
+
+`cd booking-app-backend`
+
+Open the project in your favorite code editor. `code .` for VS Code.
+
+  - Use the command `bundle install` or just simply `bundle` to install all project dependencies.
+  - Run `rails db:create db:migrate` to create the database and run migrations.
+  - You might need to supply a username and password for your PostgreSQL database if you run into an error with the previous step.
+  - Simply navigate to `config/database.yml` and add your username and password to the `username` and `password` fields.
+  
+Start terminal
+
+`rails s`
+
+- Then click on `http://127.0.0.1:3000`
+
+Enjoy your fantastic Doctoral bookings as your app opens in the web browser!
+
+
+## Run Linters:
+
+### To run rubocop we use:
+
+`rubocop`
+
+### To autocorrect offenses with rubocop we use:
+
+`rubocop --auto-correct-all` or
+`rubocop -A`
+
+
+## Testing
+
+### Run Test for models
+
+`rspec spec/models`
+
+### Run Test for views
+
+`bundle exec rspec spec/views`
+
+## Usage
+
+- Login into Booking App with your username
+- Click on the list of Doctors to see their specific detailed information
+- From Navigation or from details page click 'Reserve' to book an appointment
+- Click from Navigation panel, 'My Reservation' to view a list of your appointment details
+
+Enjoy saving time on long appointment calls by using our top ranking appointment booking App!
+
+
+## Author 1:
+
+👤 **Melaku Eshetu**
+- GitHub: [Melaku05](https://github.com/Melaku05)
+- Twitter: [Melaku](https://twitter.com/melaku_mel)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/melaku-eshetu/)
+
+
+## Author 2:
+
+👤 **Ranjit Luwang**
+- GitHub: [@aboongm](https://github.com/aboongm)
+- Twitter: [@John_luang1](https://twitter.com/John_luang1)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/aboongm)
+
+
+## Author 3:
+
+👤 **STEVE W DAMES JR**
+
+- GitHub: [@githubhandle](https://github.com/steveWDamesJr)
+- Twitter: [@twitterhandle](https://twitter.com/Steve88312331)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/steve-w-dames-jr/)
+
+
+## Author 4: 
+👤 **Ismail Courr**
+- GitHub: [@ismailco](https://github.com/ismailco)
+- Twitter: [@ismailcourr](https://twitter.com/ismailcourr)
+- LinkedIn: [Ismail courr](https://www.linkedin.com/in/ismailcourr)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/Melaku05/booking-app-backend/issues).
+
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Original design idea by [Murat Korkmaz on Behance.]('https://www.behance.net/muratk')
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
