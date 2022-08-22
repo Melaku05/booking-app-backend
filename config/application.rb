@@ -11,6 +11,11 @@ module BookingAppBackend
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    # To use the API in the frontend with session cookies, we need to add the following line to the config/application.rb file:
+    config.session_store :cookie_store, key: '_interslice_session'
+    config.middleware.use ActionDispatch::Cookies # Required for all session management
+    config.middleware.use config.session_store, config.session_options # Required for all session management
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
