@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @users = User.all
     @user = current_user
@@ -37,6 +36,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   # Only allow a list of trusted parameters through.
   def user_params
     params.fetch(:user, {})
