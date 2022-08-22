@@ -50,3 +50,6 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+# I added this gem so I can run the rails console in my machine
+gem 'rdoc'
