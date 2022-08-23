@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :reservations, dependent: :destroy
   has_many :doctors, through: :reservations
-       
+
   validates :email, presence: true, uniqueness: true
 end

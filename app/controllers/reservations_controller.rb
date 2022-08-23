@@ -6,17 +6,17 @@ class ReservationsController < ApplicationController
     else
       render json: @reservations
     end
-  end  
+  end
 
-  def create    
+  def create
     @myreservation = current_user.reservations.new(reservation_params)
     if @myreservation.save
-      render json: @myreservation    
+      render json: @myreservation
     else
-      render json: { success: false, errors: "Oops something went wrong" }, status: :unprocessable_entity
+      render json: { success: false, errors: 'Oops something went wrong' }, status: :unprocessable_entity
     end
   end
-  
+
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
