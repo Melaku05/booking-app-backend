@@ -1,82 +1,101 @@
 require 'rails_helper'
 
-RSpec.describe 'v1/users', type: :request do
-  describe 'POST /create' do
-    context 'with valid parameters' do
-      it 'returns token and user info' do
-        post v1_users_signup_path, params: { username: 'John', email: 'test@test.com', password: 'password' }
-        body = response.parsed_body
-        expect(body['token']).to_not be nil
-      end
+RSpec.describe '/users Endpoint', type: :request do
+  before :each do
+    post '/users', params: {
+      user: {
+        username: 'John Doe',
+        email: 'test@email.com',
+        password: 'Password1'
+      }
+    }.to_json, headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
+    delete '/users/sign_out'
+  end
+
+  describe 'GET /users' do
+    it 'returns code 401 if user is not authenticated' do
+      get '/users/'
+      expect(response).to have_http_status(401)
+    end
+
+    it 'returns Unauthorized if user is not authenticated' do
+      get '/users/'
+      expect(response.body).to include('Not Authorized')
+    end
+
+    it 'returns a list of users' do
+      post '/users/sign_in', params: {
+        user: {
+          email: 'test@email.com',
+          password: 'Password1'
+        }
+      }.to_json, headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+
+      get '/users/'
+      expect(response.body).to include('John Doe')
+      expect(response.body).to include('test@email.com')
+      expect(response.body).to include('created_at')
+      expect(response.body).to include('updated_at')
+      expect(response.body).to include('id')
+      expect(response.body).to include('username')
+    end
+  end
+
+  describe 'POST /users' do
+    it 'returns code 200 if user is created and authenticated' do
+      expect(response.code).to eq('200')
+    end
+  end
+
+  describe 'POST /users/sign_in' do
+    it 'returns code 200 when the user is authenticated' do
+      post '/users/sign_in', params: {
+        user: {
+          email: 'test@email.com',
+          password: 'Password1'
+        }
+      }.to_json, headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+      expect(response.code).to eq('200')
+    end
+
+    it 'returns a the user info when user is authenticated' do
+      post '/users/sign_in', params: {
+        user: {
+          email: 'test@email.com',
+          password: 'Password1'
+        }
+      }.to_json, headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+
+      expect(response.body).to include('John Doe')
+      expect(response.body).to include('test@email.com')
+      expect(response.body).to include('created_at')
+      expect(response.body).to include('updated_at')
+      expect(response.body).to include('id')
+      expect(response.body).to include('username')
+    end
+  end
+
+  describe 'DELETE /users/sign_out' do
+    it 'return code 200 if user is signed out' do
+      delete '/users/sign_out'
+      expect(response.code).to eq('200')
+    end
+
+    it 'return message if user is signed out' do
+      delete '/users/sign_out'
+      expect(response.body).to include('Successfully logged out')
     end
   end
 end
-
-#     it 'renders a JSON response with the new user' do
-#       post users_url,
-#            params: { user: valid_attributes }, headers: valid_headers, as: :json
-#       expect(response).to have_http_status(:created)
-#       expect(response.content_type).to match(a_string_including('application/json'))
-#     end
-#   end
-
-#   context 'with invalid parameters' do
-#     it 'does not create a new User' do
-#       expect do
-#         post users_url,
-#              params: { user: invalid_attributes }, as: :json
-#       end.to change(User, :count).by(0)
-#     end
-
-#     it 'renders a JSON response with errors for the new user' do
-#       post users_url,
-#            params: { user: invalid_attributes }, headers: valid_headers, as: :json
-#       expect(response).to have_http_status(:unprocessable_entity)
-#       expect(response.content_type).to match(a_string_including('application/json'))
-#     end
-#   end
-# end
-
-# describe 'PATCH /update' do
-#   context 'with valid parameters' do
-#     let(:new_attributes) do
-#       skip('Add a hash of attributes valid for your model')
-#     end
-
-#     it 'updates the requested user' do
-#       user = User.create! valid_attributes
-#       patch user_url(user),
-#             params: { user: new_attributes }, headers: valid_headers, as: :json
-#       user.reload
-#       skip('Add assertions for updated state')
-#     end
-
-#     it 'renders a JSON response with the user' do
-#       user = User.create! valid_attributes
-#       patch user_url(user),
-#             params: { user: new_attributes }, headers: valid_headers, as: :json
-#       expect(response).to have_http_status(:ok)
-#       expect(response.content_type).to match(a_string_including('application/json'))
-#     end
-#   end
-
-#   context 'with invalid parameters' do
-#     it 'renders a JSON response with errors for the user' do
-#       user = User.create! valid_attributes
-#       patch user_url(user),
-#             params: { user: invalid_attributes }, headers: valid_headers, as: :json
-#       expect(response).to have_http_status(:unprocessable_entity)
-#       expect(response.content_type).to match(a_string_including('application/json'))
-#     end
-#   end
-# end
-
-# describe 'DELETE /destroy' do
-#   it 'destroys the requested user' do
-#     user = User.create! valid_attributes
-#     expect do
-#       delete user_url(user), headers: valid_headers, as: :json
-#     end.to change(User, :count).by(-1)
-# end
-#  end
-# end
