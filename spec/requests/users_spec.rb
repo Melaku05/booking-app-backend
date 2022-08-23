@@ -1,19 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe '/users Endpoint', type: :request do
-
   before :each do
     post '/users', params: {
-        user: {
-          username: "John Doe",
-          email: "test@email.com",
-          password: "Password1"
-        }
-      }.to_json, headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+      user: {
+        username: 'John Doe',
+        email: 'test@email.com',
+        password: 'Password1'
       }
-      delete '/users/sign_out'
+    }.to_json, headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    }
+    delete '/users/sign_out'
   end
 
   describe 'GET /users' do
@@ -21,30 +20,30 @@ RSpec.describe '/users Endpoint', type: :request do
       get '/users/'
       expect(response).to have_http_status(401)
     end
-    
+
     it 'returns Unauthorized if user is not authenticated' do
       get '/users/'
-      expect(response.body).to include("Not Authorized")
+      expect(response.body).to include('Not Authorized')
     end
 
     it 'returns a list of users' do
       post '/users/sign_in', params: {
         user: {
-          email: "test@email.com",
-          password: "Password1"
+          email: 'test@email.com',
+          password: 'Password1'
         }
       }.to_json, headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Accept: 'application/json'
       }
 
       get '/users/'
-      expect(response.body).to include("John Doe")
-      expect(response.body).to include("test@email.com")
-      expect(response.body).to include("created_at")
-      expect(response.body).to include("updated_at")
-      expect(response.body).to include("id")
-      expect(response.body).to include("username")
+      expect(response.body).to include('John Doe')
+      expect(response.body).to include('test@email.com')
+      expect(response.body).to include('created_at')
+      expect(response.body).to include('updated_at')
+      expect(response.body).to include('id')
+      expect(response.body).to include('username')
     end
   end
 
@@ -58,12 +57,12 @@ RSpec.describe '/users Endpoint', type: :request do
     it 'returns code 200 when the user is authenticated' do
       post '/users/sign_in', params: {
         user: {
-          email: "test@email.com",
-          password: "Password1"
+          email: 'test@email.com',
+          password: 'Password1'
         }
       }.to_json, headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Accept: 'application/json'
       }
       expect(response.code).to eq('200')
     end
@@ -71,20 +70,20 @@ RSpec.describe '/users Endpoint', type: :request do
     it 'returns a the user info when user is authenticated' do
       post '/users/sign_in', params: {
         user: {
-          email: "test@email.com",
-          password: "Password1"
+          email: 'test@email.com',
+          password: 'Password1'
         }
       }.to_json, headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Accept: 'application/json'
       }
 
-      expect(response.body).to include("John Doe")
-      expect(response.body).to include("test@email.com")
-      expect(response.body).to include("created_at")
-      expect(response.body).to include("updated_at")
-      expect(response.body).to include("id")
-      expect(response.body).to include("username")
+      expect(response.body).to include('John Doe')
+      expect(response.body).to include('test@email.com')
+      expect(response.body).to include('created_at')
+      expect(response.body).to include('updated_at')
+      expect(response.body).to include('id')
+      expect(response.body).to include('username')
     end
   end
 
@@ -96,8 +95,7 @@ RSpec.describe '/users Endpoint', type: :request do
 
     it 'return message if user is signed out' do
       delete '/users/sign_out'
-      expect(response.body).to include("Successfully logged out")
+      expect(response.body).to include('Successfully logged out')
     end
   end
-
 end

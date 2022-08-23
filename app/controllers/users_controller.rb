@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if current_user
       render json: @user
     else
-      render json: {error: "User not found"}, status: 404
+      render json: { error: 'User not found' }, status: 404
     end
   end
 end
