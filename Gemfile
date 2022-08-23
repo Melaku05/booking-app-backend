@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# ruby "3.1.2"
+ruby '3.0.2'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 
 gem 'bootsnap', require: false
@@ -9,7 +9,6 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
-gem 'rswag'
 gem 'tzinfo-data'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -40,11 +39,21 @@ gem 'tzinfo-data'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
+# To use Rspec api documentation we add rswag-api and rswag-ui gems
+gem 'rswag-api'
+gem 'rswag-ui'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'database_cleaner'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'launchy'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+
+  # We add rswag-specs gem to avoid loading rspec in other bundler groups and preceeding rake tasks with RAILS_ENV=test.
+  gem 'rswag-specs'
 end
 
 group :development do
@@ -52,5 +61,11 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+end
 # I added this gem so I can run the rails console in my machine
 gem 'rdoc'
