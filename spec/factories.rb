@@ -5,7 +5,7 @@ FactoryBot.define do
     photo { Faker::Lorem.sentence }
     city { Faker::Lorem.sentence }
     specialization { Faker::Lorem.sentence }
-    fee { Faker::Number.decimal(2) }
+    fee { Faker::Number.decimal(l_digits: 2) }
   end
 
   factory Reservation do
