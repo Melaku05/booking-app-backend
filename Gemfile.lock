@@ -68,6 +68,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    ast (2.4.2)
     bcrypt (3.1.18)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
@@ -118,6 +119,9 @@ GEM
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
+    json (2.6.2)
+    json-schema (2.8.1)
+      addressable (>= 2.4)
     jwt (2.4.1)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -146,13 +150,18 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.8-x64-mingw-ucrt)
+    nokogiri (1.13.8-x64-unknown)
+      racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    parallel (1.22.1)
+    parser (3.1.2.1)
+      ast (~> 2.4.1)
     pg (1.4.3)
-    pg (1.4.3-x64-mingw-ucrt)
+    pg (1.4.3-x64-unknown)
     psych (4.0.4)
       stringio
     public_suffix (5.0.0)
@@ -194,14 +203,17 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
+    rainbow (3.1.1)
     rake (13.0.6)
     rdoc (6.4.0)
       psych (>= 4.0.0)
+    regexp_parser (2.5.0)
     reline (0.3.1)
       io-console (~> 0.5)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rexml (3.2.5)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
     rspec-expectations (3.11.0)
@@ -221,9 +233,29 @@ GEM
     rspec-support (3.11.0)
     rswag-api (2.5.1)
       railties (>= 3.1, < 7.1)
+    rswag-specs (2.5.1)
+      activesupport (>= 3.1, < 7.1)
+      json-schema (~> 2.2)
+      railties (>= 3.1, < 7.1)
     rswag-ui (2.5.1)
       actionpack (>= 3.1, < 7.1)
       railties (>= 3.1, < 7.1)
+    rubocop (1.35.1)
+      json (~> 2.3)
+      parallel (~> 1.10)
+      parser (>= 3.1.2.1)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.20.1, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.21.0)
+      parser (>= 3.1.1.0)
+    rubocop-faker (1.1.0)
+      faker (>= 2.12.0)
+      rubocop (>= 0.82.0)
+    ruby-progressbar (1.11.0)
     stringio (3.0.2)
     strscan (3.0.4)
     thor (1.2.1)
@@ -232,6 +264,7 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2022.3)
       tzinfo (>= 1.0.0)
+    unicode-display_width (2.2.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     warden-jwt_auth (0.6.0)
@@ -245,7 +278,8 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  x64-mingw-ucrt
+  x64-unknown
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -265,8 +299,10 @@ DEPENDENCIES
   rdoc
   rspec-rails
   rswag-api
+  rswag-specs
   rswag-ui
+  rubocop-faker
   tzinfo-data
 
 BUNDLED WITH
-   2.3.19
+   2.3.20

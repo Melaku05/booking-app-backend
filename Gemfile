@@ -51,6 +51,7 @@ group :development, :test do
   gem 'launchy'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :test do
@@ -59,3 +60,4 @@ group :test do
 end
 # I added this gem so I can run the rails console in my machine
 gem 'rdoc'
+gem 'rubocop-faker'
