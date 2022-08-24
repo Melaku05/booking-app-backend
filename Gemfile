@@ -45,12 +45,28 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
-group :development do
+group :test do
+  gem 'factory_bot_rails'
+  gem 'faker'
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
 
 # I added this gem so I can run the rails console in my machine
 gem 'rdoc'
+
+# Gemfile
+gem 'rswag-api'
+gem 'rswag-ui'
+
+def create
+  @doctor = Doctor.new(doctor_params)
+  if @doctor.save
+    render json: @doctor, status: :created, location: @doctor
+  else
+    render json: @doctor.errors, status: :unprocessable_entity
+  end
+end

@@ -98,6 +98,13 @@ GEM
     dry-core (0.8.1)
       concurrent-ruby (~> 1.0)
     erubi (1.11.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (2.22.0)
+      i18n (>= 1.8.11, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -248,6 +255,8 @@ DEPENDENCIES
   debug
   devise
   devise-jwt
+  factory_bot_rails
+  faker
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
@@ -256,6 +265,9 @@ DEPENDENCIES
   rdoc
   rspec-rails
   rswag
+  rswag-api
+  rswag-specs
+  rswag-ui
   tzinfo-data
 
 BUNDLED WITH
