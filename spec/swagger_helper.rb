@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -16,8 +18,7 @@ RSpec.configure do |config|
     'v1/swagger.yaml' => {
       openapi: '3.0.1',
       info: {
-        title: 'Booking-app-api-v1',
-
+        title: 'API V1',
         version: 'v1'
       },
       paths: {},
@@ -26,20 +27,11 @@ RSpec.configure do |config|
           url: 'https://{defaultHost}',
           variables: {
             defaultHost: {
-
-              default: 'localhost:3001'
+              default: 'www.example.com'
             }
           }
         }
-      ],
-      securitySchemes: {
-        JWT: {
-          description: 'JWT API authentication',
-          type: :apiKey,
-          name: 'Authorization',
-          in: :header
-        }
-      }
+      ]
     }
   }
 
