@@ -128,6 +128,8 @@ GEM
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
+    json-schema (2.8.1)
+      addressable (>= 2.4)
     jwt (2.4.1)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -231,6 +233,10 @@ GEM
     rspec-support (3.11.0)
     rswag-api (2.5.1)
       railties (>= 3.1, < 7.1)
+    rswag-specs (2.5.1)
+      activesupport (>= 3.1, < 7.1)
+      json-schema (~> 2.2)
+      railties (>= 3.1, < 7.1)
     rswag-ui (2.5.1)
       actionpack (>= 3.1, < 7.1)
       railties (>= 3.1, < 7.1)
@@ -278,8 +284,11 @@ DEPENDENCIES
   devise
   devise-jwt
   factory_bot_rails
+<<<<<<< HEAD
   faker
+=======
   launchy
+>>>>>>> dev
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
@@ -287,9 +296,17 @@ DEPENDENCIES
   rails-controller-testing
   rdoc
   rspec-rails
+<<<<<<< HEAD
+  rswag
   rswag-api
+  rswag-specs
+  rswag-ui
+=======
+  rswag-api
+  rswag-specs
   rswag-ui
   selenium-webdriver
+>>>>>>> dev
   tzinfo-data
   webdrivers
 

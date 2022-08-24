@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# ruby "3.1.2"
+# ruby '3.0.2'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 
 gem 'bootsnap', require: false
@@ -9,7 +9,6 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
-gem 'rswag'
 gem 'tzinfo-data'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -40,33 +39,23 @@ gem 'tzinfo-data'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
-group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'rails-controller-testing'
-  gem 'rspec-rails'
-  gem 'rswag-specs'
-end
-
-group :test do
-  gem 'factory_bot_rails'
-  gem 'faker'
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
-end
-
-# I added this gem so I can run the rails console in my machine
-gem 'rdoc'
-
-# Gemfile
+# To use Rspec api documentation we add rswag-api and rswag-ui gems
 gem 'rswag-api'
 gem 'rswag-ui'
 
-def create
-  @doctor = Doctor.new(doctor_params)
-  if @doctor.save
-    render json: @doctor, status: :created, location: @doctor
-  else
-    render json: @doctor.errors, status: :unprocessable_entity
-  end
+group :development, :test do
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'database_cleaner'
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'launchy'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
 end
+
+group :test do
+  gem 'faker'
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+end
+# I added this gem so I can run the rails console in my machine
+gem 'rdoc'
