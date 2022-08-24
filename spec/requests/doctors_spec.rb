@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'doctor Api', type: :request do
-  context 'GET/doctors' do
+RSpec.describe 'doctor Api', type: :request do
+  before :each do
     post '/users', params: {
       user: {
         username: 'John Doe',
@@ -12,13 +12,16 @@ describe 'doctor Api', type: :request do
       'Content-Type': 'application/json',
       Accept: 'application/json'
     }
+  end
+
+  describe 'GET/doctors' do
     it 'should return a list of doctors' do
       FactoryBot.create(:doctor, name: 'Dr. John Doe', detail: 'Dentist',
                                  photo: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png', city: 'New York', specialization: 'Dentist', fee: '100')
       FactoryBot.create(:doctor, name: 'Dr. Jane Doe', detail: 'Dentist',
                                  photo: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png', city: 'New York', specialization: 'Dentist', fee: '100')
       get '/doctors'
-      expect(response).to have_http_status(:created)
+      expect(response).to have_http_status(200)
       expect(JSON.parse(response.body).size).to eq(Doctor.count)
     end
   end
