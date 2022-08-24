@@ -51,21 +51,11 @@ group :development, :test do
   gem 'launchy'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
-
-  # We add rswag-specs gem to avoid loading rspec in other bundler groups and preceeding rake tasks with RAILS_ENV=test.
-  gem 'rswag-specs'
-end
-
-group :development do
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
 end
 
 group :test do
+  gem 'faker'
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
 end
 # I added this gem so I can run the rails console in my machine
 gem 'rdoc'
