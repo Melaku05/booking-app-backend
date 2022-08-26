@@ -1,50 +1,102 @@
 ---
 openapi: 3.0.1
 info:
-  title: API V1
+  title: Booking-app-api-v1
   version: v1
 paths:
-  "/doctors":
-    get:
-      summary: list doctors
-      responses:
-        '200':
-          description: successful
-    post:
-      summary: create doctor
-      responses:
-        '200':
-          description: successful
-  "/doctors/{id}":
+  reservations:
     parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
+    - name: Authorization
+      in: header
+      description: bearer xyz
       schema:
         type: string
     get:
-      summary: show doctor
+      summary: list reservations
+      tags:
+      - reservations
       responses:
-        '200':
-          description: successful
-    patch:
-      summary: update doctor
+        '401':
+          description: Invalid request
+  reservations/create:
+    parameters:
+    - name: Authorization
+      in: header
+      description: bearer xyz
+      schema:
+        type: string
+    post:
+      summary: Create a reservation
+      tags:
+      - reservations
+      parameters: []
       responses:
-        '200':
-          description: successful
-    put:
-      summary: update doctor
-      responses:
-        '200':
-          description: successful
+        '401':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                city:
+                  type: string
+                date:
+                  type: string
+                doctor_id:
+                  type: number
+              required:
+              - city
+              - date
+              - doctor_id
+  reservations/delete:
+    parameters:
+    - name: Authorization
+      in: header
+      description: bearer xyz
+      schema:
+        type: string
     delete:
-      summary: delete doctor
+      summary: Delete a reservatio
+      tags:
+      - reservations
+      parameters: []
       responses:
-        '200':
-          description: successful
+        '401':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reservation_id:
+                  type: number
+              required:
+              - reservation_id
+  "/users":
+    get:
+      summary: returns code 401 if user is not authenticated
+      tags:
+      - Users
+      responses:
+        '401':
+          description: Not Authorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
 servers:
 - url: https://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: localhost:3001
+securitySchemes:
+  JWT:
+    description: JWT API authentication
+    type: apiKey
+    name: Authorization
+    in: header
