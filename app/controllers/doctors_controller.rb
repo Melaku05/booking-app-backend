@@ -4,7 +4,7 @@ class DoctorsController < ApplicationController
   def index
     @doctors = Doctor.all
     if @doctors.empty?
-      json_response({ msg: 'No doctor found' }, 400)
+      render json: { error: 'No doctor found' }, status: 200
     else
       render json: @doctors
     end

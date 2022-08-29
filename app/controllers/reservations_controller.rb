@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
   def index
     @reservations = current_user.reservations
     if @reservations.empty?
-      json_response({ msg: 'No doctor found' }, 400)
+      render json: { error: 'No Reservations!' }, status: 200
     else
       render json: @reservations
     end
