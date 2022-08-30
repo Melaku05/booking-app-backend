@@ -17,7 +17,7 @@ RSpec.describe Reservation, type: :model do
       expect(@reservation.city).to eq('Imphal')
     end
     it 'should have the date' do
-      expect(@reservation.date).to eq('23/8/2022')
+      expect(@reservation.date).to eq('Tue, 23 Aug 2022'.to_date)
     end
     it 'should not have blank city' do
       @reservation.city = ''
