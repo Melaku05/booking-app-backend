@@ -19,7 +19,7 @@ RSpec.describe 'reservation Api', type: :request do
     it 'should return a list of reservations' do
       FactoryBot.create(:doctor, name: 'Dr. John Doe', detail: 'Dentist',
                                  photo: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png', city: 'New York', specialization: 'Dentist', fee: '100')
-      FactoryBot.create(:doctor, name: 'Dr. Jane Doe', detail: 'Dentist',
+      FactoryBot.create(:doctor, id: 2, name: 'Dr. Jane Doe', detail: 'Dentist',
                                  photo: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png', city: 'New York', specialization: 'Dentist', fee: '100')
 
       FactoryBot.create(:reservation, city: 'Imphal', date: '24/08/2022', user_id: @current_user.id, doctor_id: 1)
