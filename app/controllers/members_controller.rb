@@ -5,7 +5,6 @@ class MembersController < ApplicationController
     user = fetch_user_from_token
     render json: {
       message: 'Successfully authenticated',
-      # removed user: user to avoid lint error, but it's not necessary
       user:
     }
   end
