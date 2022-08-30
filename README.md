@@ -54,7 +54,7 @@ Enjoy your API!
 
 ## API Endpoints
 
-[Rswag api documentations](http://localhost:3000/api-docs/index.html)
+[Live server: Rswag api documentations](https://booking-app.fly.dev/api-docs/index.html)
 
 #### users/ endpoint
 
