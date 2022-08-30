@@ -19,6 +19,9 @@ Enjoy your API!
 - Rubocop (linters)
 - PostgreSQL
 
+## API Endpoints
+[Rswag](http://localhost:3000/api-docs/index.html)
+
 ## Milestones
 
 [Project Requirements](https://github.com/microverseinc/curriculum-final-capstone/blob/main/projects/business_requirements.md) - distributed into milestones below:
