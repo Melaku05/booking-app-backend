@@ -6,6 +6,18 @@ This app uses a Rails back-end as an API to send doctor details and appointment 
 
 Enjoy your API!
 
+## Link to Kanban
+- [Kanban Board Link](https://github.com/users/Melaku05/projects/5)
+- [Initial Kanban Board State](https://user-images.githubusercontent.com/81635839/185418057-3a0ccd96-262b-43e6-a7c1-d04c4b2d38e8.png) 
+
+## Group Members
+Our group consists of 4 members and we are:
+@Melaku05 - Team Member #1
+@aboongm - Team Member #2
+@steveWDamesJr - Team Member #3
+@Ismailco - Team Member #4
+
+
 ## Link to REACT FRONTEND
 
 [REACT FRONTEND](https://github.com/Melaku05/booking-app-frontend)
