@@ -26,4 +26,9 @@
 !/tmp/storage/.keep
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+# /config/master.key
+
+# Ignore the fly.io files
+Dockerfile
+fly.toml
+.dockerignore
